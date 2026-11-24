@@ -1,5 +1,6 @@
 [project]
 site_name = "OpenCode: Guía Completa para Desarrolladores"
+site_url = "https://jose-quesada.github.io/materiales_opencode/"
 site_description = "Materiales de estudio y apuntes estructurados del curso OpenCode: Guía completa para desarrolladores de software."
 site_author = "Apuntes del Curso"
 docs_dir = "docs"
