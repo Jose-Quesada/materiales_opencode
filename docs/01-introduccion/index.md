@@ -12,7 +12,7 @@ description: Presentación del curso, metodología de trabajo, instalaciones pre
 
 | Guía | Contenido principal |
 | :--- | :--- |
-| [1. Conceptos básicos de IA para clase](01-fundamentos-ia.md) | Cómo funcionan los LLMs, **tokens**, **ventana de contexto**, modelos *stateless* y "zona tonta", *prompts*, diferencia entre **modelo / proveedor / API Key / agente**, **comparativa de modelos y costos (OpenAI, Anthropic, Gemini, DeepSeek)**, alucinaciones y glosario exprés. |
+| [1. Conceptos básicos de IA para clase](01-fundamentos-ia.md) | Cómo funcionan los LLMs, **tokens**, **ventana de contexto**, modelos *stateless* y "zona tonta", *prompts*, diferencia entre **modelo / proveedor / API Key / agente**, **comparativa de modelos y costos (OpenAI, Anthropic, Gemini, DeepSeek, Qwen)**, **modelos de toma de decisiones (JEV vs LLM)**, alucinaciones y glosario exprés. |
 
 ## Puntos generales a tratar
 

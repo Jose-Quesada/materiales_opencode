@@ -138,6 +138,7 @@ En el mundo de la IA existen **dos formas de pagar** que conviene distinguir des
 | **Anthropic (Claude)** | **Claude Haiku** (rápido)<br/>**Claude Sonnet** (equilibrado)<br/>**Claude Opus** (máxima profundidad) | **Gratis** (limitado)<br/>**Pro:** $20/mes<br/>**Max / Ultra:** $100 – $200/mes | **Haiku:** ~$0.10 / $0.50<br/>**Sonnet:** ~$2–3 / $10–15<br/>**Opus:** ~$4–5 / $20–25 | Altísima calidad en programación, refactorización y seguimiento de instrucciones largas. |
 | **Google Gemini** | **Gemini 3.8 Flash / Flash-Lite** (velocidad y bajo costo)<br/>**Gemini 4 Pro / Neon / Carbon** (razonamiento y código avanzado) | **Gratis** (cuotas diarias)<br/>**AI Plus:** ~$5/mes<br/>**AI Pro:** ~$20/mes<br/>**AI Ultra:** desde ~$100/mes | **Flash:** ~$0.75–1.50 / $3.75–7.50<br/>**Pro:** ~$2–4 / $10–20 | Ventanas de contexto muy amplias (~1M+ tokens), excelente multimodalidad (texto, imagen, audio, vídeo) e integración con Google Workspace. |
 | **DeepSeek** | **DeepSeek Flash (`V4.1-Flash`)** (económico y ágil)<br/>**DeepSeek Pro (`V4-Pro`)** (razonamiento y código) | **Chat web/app gratis**<br/>Sin suscripción obligatoria (pago por uso en API) | **Flash:** ~$0.15–0.30 / $0.60–1.20<br/>**Pro:** ~$0.66–1.32 / $1.98–3.96 | Relación **calidad/precio imbatible** en API, descuentos del 50 % en horario *off-peak* y *prompt caching* muy barato. |
+| **Qwen (Alibaba Cloud)** | **Qwen Flash (`3.5` / `3.8-Flash`)** (rápido)<br/>**Qwen Plus (`3.5` / `3.7-Plus`)** (equilibrado)<br/>**Qwen Max (`3.7` / `4-Max`)** (razonamiento)<br/>**Qwen-Coder** (especializado en código) | **Chat web gratis**<br/>Sin suscripción fija en API (cuota gratuita inicial) | **Flash:** ~$0.10–0.15 / $0.38–0.47<br/>**Plus:** ~$0.32–0.40 / $1.28–2.40<br/>**Max:** ~$1.25–2.00 / $3.75–6.00 | Ecosistema *open-weight* potentísimo para programación (`Qwen-Coder`), gran soporte en español, usable vía API, **OpenCode Go** o **local con Ollama**. |
 | **OpenCode Zen / Go** *(usados en el curso)* | **Zen Free:** `Big Pickle`, `MiMo V2.5 Free`<br/>**Go:** `GLM-5.2`, `DeepSeek`, `Qwen3.7`, `Kimi K2.7` | **Zen:** modelos `Free` gratis<br/>**Go:** $5 primer mes, luego $10/mes | Pago por uso en modelos no gratuitos de Zen | Acceso unificado y económico a modelos *open-source* potentes para programación. |
 | **Ollama (Local)** | **Qwen 3.5**, **Llama**, **DeepSeek** (en tu propio PC) | **$0 (100 % Gratis)** | $0 (solo tu electricidad/hardware) | Privacidad total y trabajo sin internet (requiere buena RAM y GPU). |
 
@@ -179,12 +180,67 @@ En el mundo de la IA existen **dos formas de pagar** que conviene distinguir des
     - **Suscripciones:** El chat web/móvil es gratuito; para desarrolladores funciona por **API de pago por uso** sin cuota mensual fija.
     - **Punto fuerte:** Tarifas de API drásticamente más bajas que los modelos propietarios tradicionales, con **50 % de descuento en horario *off-peak*** (fines de semana y franjas fuera de hora punta UTC) y lectura de caché de contexto por céntimos.
 
+=== "Qwen (Alibaba Cloud)"
+
+    - **Modelos principales:**
+        - **Qwen Flash (`Qwen3.5-Flash` / `Qwen3.8-Flash`):** muy rápido y económico para tareas diarias.
+        - **Qwen Plus (`Qwen3.5-Plus` / `Qwen3.7-Plus`):** equilibrio ideal entre rendimiento, multimodalidad y costo (hasta 1M de contexto).
+        - **Qwen Max (`Qwen3.7-Max` / `Qwen4-Max`):** gama alta para razonamiento profundo y agentes complejos.
+        - **Qwen-Coder y versiones *open-weight*:** modelos especializados en programación que incluso puedes descargar gratis y ejecutar en tu PC con **Ollama** (`ollama run qwen3.5`).
+    - **Suscripciones y acceso:** Chat web gratuito; la API oficial (*Alibaba Cloud Model Studio*) es de pago por uso sin cuota mensual fija (con descuentos por *Context Caching* y 50 % en *Batch API*). También está disponible dentro de **OpenCode Go** (`Qwen3.7 Plus/Max`) y en agregadores como OpenRouter.
+    - **Punto fuerte:** Combina precios muy competitivos, gran nivel en programación y la libertad de poder usarlo tanto en la nube como **100 % local**.
+
 !!! tip "¿Qué recomiendo para empezar en clase?"
     Si estás empezando desde cero, **no necesitas gastar dinero**: usa los modelos gratuitos de **OpenCode Zen (`Free`)** o prueba **Ollama** en local si tienes buen ordenador. Si ya pagas **ChatGPT Plus**, aprovéchalo por OAuth; y si buscas una suscripción barata enfocada a programar en OpenCode, **OpenCode Go ($5–$10/mes)** ofrece acceso muy rentable a modelos *open-source* como DeepSeek, GLM y Qwen.
 
 ---
 
-## 7. Alucinaciones y el rol del desarrollador
+## 7. Más allá de los LLMs: Modelos de toma de decisiones (JEV)
+
+No todos los problemas de IA en el desarrollo de software necesitan que un modelo **redacte texto**. A veces tu aplicación solo necesita **tomar una decisión rápida, estructurada y medible** (por ejemplo: *¿es spam o no?*, *¿qué departamento debe atender este ticket?*, *¿esta petición infringe una regla de seguridad?*).
+
+Ahí es donde entran los **modelos de toma de decisiones (*Decision Models*)**, cuyo representante más conocido es **JEV** (desarrollado por *TypeSafe AI* e inspirado en el concepto de *Sistema 1*: pensamiento rápido e intuitivo).
+
+### ¿Cómo funciona un modelo como JEV?
+
+A diferencia de un LLM, **JEV no es generativo**: no escribe frases token a token.
+
+1. Recibe el **estado o entrada** de tu programa (un texto, un JSON, un log o una petición de usuario).
+2. Recibe una o varias **preguntas tipadas** (sí/no, elección cerrada entre una lista de opciones o una escala numérica).
+3. Las evalúa **en paralelo** en una sola pasada y devuelve directamente **datos tipados con probabilidades calibradas** (por ejemplo, `urgente: 0.92`, `consulta_general: 0.06`, `spam: 0.02`).
+
+### Diferencias clave: LLM vs Modelo de Decisión (JEV)
+
+| Característica | LLM (*ChatGPT, Claude, Gemini, DeepSeek, Qwen*) | Modelo de Decisión (**JEV**) |
+| :--- | :--- | :--- |
+| **Pregunta que responde** | *"¿Qué texto o código tiene más sentido generar a continuación?"* | *"¿Cuál de estas opciones predefinidas es la correcta y con qué probabilidad?"* |
+| **Tipo de salida** | Texto libre, conversaciones, código o explicaciones | Valores tipados: opciones cerradas, puntuaciones y probabilidades calibradas |
+| **¿Es generativo?** | **Sí** (genera respuesta token a token) | **No** (clasificador/evaluador sin generación de texto libre) |
+| **Velocidad y costo** | Más lento y costoso para decisiones repetitivas de alto volumen | Mucho más rápido (decenas de veces) y económico para decisiones programáticas |
+| **Control de formato** | Puede desviarse o alucinar texto fuera del formato esperado | Salida estrictamente tipada (cero prosa innecesaria) |
+| **Uso ideal** | Escribir código, explicar conceptos, resumir, razonar en lenguaje natural | Enrutamiento, clasificación, moderación, *guardrails* y filtrado de herramientas |
+
+### Casos de uso reales en software y agentes
+
+1. **Enrutamiento inteligente (*Routing*):** Decidir al instante si una consulta del usuario va a un flujo automático, a un modelo barato/rápido o a un modelo razonador avanzado.
+2. **Barreras de seguridad (*Guardrails*):** Comprobar en milisegundos si un mensaje contiene *prompt injection*, datos sensibles o contenido prohibido **antes** de enviarlo al LLM.
+3. **Clasificación y triaje de alto volumen:** Etiquetar miles de tickets de soporte, correos o incidencias con umbrales de confianza (por ejemplo, escalar a un humano si la probabilidad baja del 80 %).
+4. **Filtrado de herramientas en agentes:** Determinar qué herramientas (*Tools*) o permisos necesita un agente antes de arrancar una tarea pesada.
+
+### Cómo conviven en una arquitectura moderna
+
+No compiten entre sí: **se complementan**. Un patrón habitual es usar un modelo de decisión como filtro/enrutador rápido y reservar el LLM solo para cuando hace falta generar contenido o código:
+
+```mermaid
+flowchart LR
+    U["Petición del usuario<br/>o evento del sistema"] --> J["JEV (Modelo de Decisión)<br/>Valida seguridad y elige ruta<br/>(milisegundos, tipado)"]
+    J -->|"Acción directa<br/>(ej. bloquear / etiquetar)"| A["Respuesta automática<br/>sin coste de LLM"]
+    J -->|"Requiere generar<br/>código o texto"| L["LLM (ChatGPT / Gemini / Qwen)<br/>Razona y redacta<br/>la solución"]
+```
+
+---
+
+## 8. Alucinaciones y el rol del desarrollador
 
 Una **alucinación** ocurre cuando el modelo inventa un dato, una función, una librería o un comportamiento que **no existe**, pero lo explica con total seguridad y tono convincente.
 
@@ -197,11 +253,12 @@ Una **alucinación** ocurre cuando el modelo inventa un dato, una función, una 
 
 ---
 
-## 8. Glosario exprés de bolsillo
+## 9. Glosario exprés de bolsillo
 
 | Término | Definición en una frase |
 | :--- | :--- |
-| **LLM** | Modelo de IA entrenado para predecir y generar texto/código. |
+| **LLM** | Modelo de IA generativo entrenado para predecir y generar texto/código. |
+| **Modelo de Decisión (JEV)** | Modelo no generativo que evalúa opciones tipadas y devuelve decisiones con probabilidades calibradas en milisegundos. |
 | **Token** | Fragmento de texto (~3–4 caracteres en español) con el que la IA mide tamaño y costo. |
 | **Contexto** | Toda la información (instrucciones + historial + archivos) que el modelo recibe en un turno. |
 | **Stateless** | El modelo no guarda memoria entre mensajes; el cliente reenvía el historial cada vez. |
@@ -221,3 +278,6 @@ Una **alucinación** ocurre cuando el modelo inventa un dato, una función, una 
 
 ??? question "3. ¿Por qué un mismo prompt puede generar código distinto en dos pruebas?"
     Porque los LLMs son **probabilísticos (no deterministas)** y además cada modelo ha sido entrenado de forma diferente y depende del contexto disponible en ese momento.
+
+??? question "4. ¿Cuándo conviene usar un modelo de decisión como JEV en lugar de un LLM?"
+    Cuando tu software solo necesita **clasificar, enrutar o validar reglas sobre opciones cerradas** con baja latencia, salida estrictamente tipada y bajo costo, sin necesidad de redactar texto ni código libre.
