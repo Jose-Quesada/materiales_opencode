@@ -48,7 +48,7 @@ nav = [
 #    ]},
 #    { "Despliegue y Cierre" = [
 #        { "12. Producción" = "12-produccion/index.md" },
-#        { "13. Fin del curso" = "13-fin-del-curso/index.md" },
+# #       { "13. Fin del curso" = "13-fin-del-curso/index.md" },
    ]},
 ]
 
