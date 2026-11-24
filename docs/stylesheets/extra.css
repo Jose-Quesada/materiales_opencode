@@ -1,0 +1,31 @@
+/* Estilos personalizados para los apuntes del curso OpenCode */
+
+.badge-status {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+}
+
+.badge-pending {
+  background-color: rgba(255, 160, 0, 0.15);
+  color: #e65100;
+  border: 1px solid rgba(255, 160, 0, 0.35);
+}
+
+.badge-done {
+  background-color: rgba(0, 150, 136, 0.15);
+  color: #00796b;
+  border: 1px solid rgba(0, 150, 136, 0.35);
+}
+
+[data-md-color-scheme="slate"] .badge-pending {
+  color: #ffb74d;
+}
+
+[data-md-color-scheme="slate"] .badge-done {
+  color: #4db6ac;
+}

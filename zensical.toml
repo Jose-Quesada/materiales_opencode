@@ -1,0 +1,122 @@
+[project]
+site_name = "OpenCode: Guía Completa para Desarrolladores"
+site_description = "Materiales de estudio y apuntes estructurados del curso OpenCode: Guía completa para desarrolladores de software."
+site_author = "Apuntes del Curso"
+docs_dir = "docs"
+site_dir = "site"
+use_directory_urls = true
+
+extra_css = [
+    "stylesheets/extra.css"
+]
+
+nav = [
+    { "Inicio" = "index.md" },
+    { "Fundamentos" = [
+        { "01. Introducción" = [
+            { "Resumen del módulo" = "01-introduccion/index.md" },
+            { "1. Conceptos básicos de IA" = "01-introduccion/01-fundamentos-ia.md" },
+        ]},
+        { "02. Instalación y configuraciones" = [
+            { "Resumen del módulo" = "02-instalacion-configuraciones/index.md" },
+            { "1. Instalación inicial y primeros pasos" = "02-instalacion-configuraciones/01-instalacion-inicial.md" },
+            { "2. Proveedores y modelos de IA" = "02-instalacion-configuraciones/02-proveedores-modelos.md" },
+            { "3. Instrucciones globales y memoria" = "02-instalacion-configuraciones/03-instrucciones-globales.md" },
+            { "4. Personalización del TUI (tui.json)" = "02-instalacion-configuraciones/04-configuracion-tui.md" },
+            { "5. Batería de ejercicios" = "02-instalacion-configuraciones/05-ejercicios.md" },
+        ]},
+#        { "03. OpenCode 101 - Primeros pasos" = [
+#            { "Resumen del módulo" = "03-opencode-101/index.md" },
+#            { "1. TUI, navegación y contexto" = "03-opencode-101/01-tui-y-contexto.md" },
+#            { "2. Comandos /undo, /redo y Git" = "03-opencode-101/02-undo-redo-git.md" },
+#            { "3. /init, AGENTS.md y patrones a ignorar" = "03-opencode-101/03-init-agents-ignore.md" },
+#            { "4. Plan Mode, Build Mode y modelos" = "03-opencode-101/04-plan-mode-y-agentes.md" },
+#            { "5. Batería de ejercicios" = "03-opencode-101/05-ejercicios.md" },
+#        ]},
+#        { "04. Aplicación de consola" = "04-aplicacion-consola/index.md" },
+#    ]},
+#    { "Flujo Avanzado y SDD" = [
+#        { "05. Worktrees y comandos" = "05-worktrees-comandos/index.md" },
+#        { "06. Spec Driven Development" = "06-spec-driven-development/index.md" },
+#        { "07. MCPs y Agentes" = "07-mcps-agentes/index.md" },
+#    ]},
+#    { "Proyecto OpenDayCare" = [
+#        { "08. Maquetación de OpenDayCare" = "08-maquetacion-opendaycare/index.md" },
+#        { "09. Referencias, esquemas y Supabase" = "09-referencias-supabase/index.md" },
+#        { "10. Automatizaciones y agentes en paralelo" = "10-automatizaciones-paralelo/index.md" },
+#        { "11. Metodologías Grill Me y OpenSpec" = "11-grill-me-openspec/index.md" },
+#    ]},
+#    { "Despliegue y Cierre" = [
+#        { "12. Producción" = "12-produccion/index.md" },
+#        { "13. Fin del curso" = "13-fin-del-curso/index.md" },
+   ]},
+]
+
+[project.theme]
+language = "es"
+features = [
+    "navigation.instant",
+    "navigation.instant.prefetch",
+    "navigation.instant.progress",
+    "navigation.tracking",
+    "navigation.tabs",
+    "navigation.tabs.sticky",
+    "navigation.sections",
+    "navigation.expand",
+    "navigation.path",
+    "navigation.indexes",
+    "navigation.top",
+    "navigation.footer",
+    "toc.follow",
+    "search.suggest",
+    "search.highlight",
+    "search.share",
+    "content.code.copy",
+    "content.code.annotate",
+    "content.tabs.link",
+    "content.tooltips",
+    "content.footnote.tooltips",
+]
+
+[[project.theme.palette]]
+scheme = "default"
+primary = "indigo"
+accent = "teal"
+toggle = { icon = "material/brightness-7", name = "Cambiar a modo oscuro" }
+
+[[project.theme.palette]]
+scheme = "slate"
+primary = "indigo"
+accent = "teal"
+toggle = { icon = "material/brightness-4", name = "Cambiar a modo claro" }
+
+[project.markdown_extensions]
+admonition = {}
+abbr = {}
+attr_list = {}
+def_list = {}
+footnotes = {}
+md_in_html = {}
+tables = {}
+toc = { permalink = true }
+pymdownx.betterem = {}
+pymdownx.caret = {}
+pymdownx.details = {}
+pymdownx.highlight = { anchor_linenums = true, line_spans = "__span", pygments_lang_class = true }
+pymdownx.inlinehilite = {}
+pymdownx.keys = {}
+pymdownx.mark = {}
+pymdownx.smartsymbols = {}
+pymdownx.snippets = {}
+pymdownx.tabbed = { alternate_style = true }
+pymdownx.tasklist = { custom_checkbox = true }
+pymdownx.tilde = {}
+
+[project.markdown_extensions.pymdownx.emoji]
+emoji_index = "zensical.extensions.emoji.twemoji"
+emoji_generator = "zensical.extensions.emoji.to_svg"
+
+[project.markdown_extensions.pymdownx.superfences]
+custom_fences = [
+    { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
